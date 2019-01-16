@@ -1,0 +1,18 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Detail
+
+@{
+    bool multiple = true;
+    foreach (string zutat in @Model.zutaten)
+    {
+        if (multiple)
+        {
+            @Html.Raw(zutat);
+            multiple = false;
+        }
+        else
+        {
+            @Html.Raw(", " + zutat);
+        }
+    }
+}

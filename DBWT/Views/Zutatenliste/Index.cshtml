@@ -1,0 +1,68 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Zutatenliste
+
+@{
+    ViewBag.Name = "Zutatenliste";
+    ViewBag.Title = "e-Mensa - Zutaten";
+    ViewBag.Description = "Die Zutaten-Seite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Zutatenliste </h2>
+
+<div class="middleElement20">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>Zutat</th>
+                <th class="textCenter">Vegan</th>
+                <th class="textCenter">Vegetarisch</th>
+                <th class="textCenter">Glutenfrei</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Zutat z in @Model.zutatenliste)
+                {
+                    <tr>
+                        <th>
+                            @{ if (z.bio)
+                                {
+                                    <a href="https://www.google.de/search?q=@z.name" title="Auf Google nach @z.name suchen">@z.name <img title="Bio-Logo" src="~/Ressources/Images/Bio.jpg" alt="Bio-Logo" class="bioImg" /></a>
+                                }
+                                else
+                                {
+                                    <a href="https://www.google.de/search?q=@z.name" title="Auf Google nach @z.name suchen">@z.name</a>
+                                }
+                            }
+                        </th>
+                        @if (z.vegan)
+                        {
+                            <td class="true">&#10003;</td>
+                        }
+                        else
+                        {
+                            <td class="false">&#10005;</td>
+                        }
+                        @if (z.vegetarisch)
+                        {
+                            <td class="true">&#10003;</td>
+                        }
+                        else
+                        {
+                            <td class="false">&#10005;</td>
+                        }
+                        @if (z.glutenfrei)
+                        {
+                            <td class="true">&#10003;</td>
+                        }
+                        else
+                        {
+                            <td class="false">&#10005;</td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

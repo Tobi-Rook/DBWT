@@ -1,0 +1,20 @@
+﻿@{
+    string anzahl = "";
+    if (ViewBag.Anzahl == null)
+    {
+        anzahl = "0";
+    }
+    else
+    {
+        anzahl = ViewBag.Anzahl.ToString();
+    }
+
+    if (!string.IsNullOrEmpty(Session["user"] as string) && ViewBag.Name != "Bestellung")
+    {
+        <li class="nav-item">@Html.ActionLink("Bestellungen (" + anzahl + ")", "Index", "Bestellungen", new { }, new { @class = "nav-link" })</li>
+    }
+    else
+    {
+        <li class="nav-item">@Html.ActionLink("Bestellungen (" + anzahl + ")", "Index", "Bestellungen", new { }, new { @class = "nav-link not-active" })</li>
+    }
+}

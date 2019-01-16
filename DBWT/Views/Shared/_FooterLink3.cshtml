@@ -1,0 +1,10 @@
+﻿@{
+    if (ViewBag.Name == "Zutatenliste")
+    {
+        <li class="nav-item">@Html.ActionLink("Zutatenliste", "Index", "Zutatenliste", new { }, new { @class = "nav-link not-active" })</li>
+    }
+    else
+    {
+        <li class="nav-item">@Html.ActionLink("Zutatenliste", "Index", "Zutatenliste", new { }, new { @class = "nav-link" })</li>
+    }
+}

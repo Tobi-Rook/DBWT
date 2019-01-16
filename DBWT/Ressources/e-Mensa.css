@@ -1,0 +1,309 @@
+﻿@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before 
+{
+    font-family: 'FontAwesome', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, .orderCounter, .splash, button
+{
+    text-align: center;
+}
+
+h2 
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.true
+{
+    color: #138f00;
+}
+
+.wait
+{
+    color: #ffcb00;
+}
+
+.false
+{
+    color: #ff0000;
+}
+
+a, .dropdown-menu, .dropdown-item, .tablinks
+{
+    color: #00b5ad;
+}
+
+a:hover
+{
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.not-active 
+{
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+}
+
+.border 
+{
+    border-right: 1px solid;
+    border-radius: 5px;
+}
+
+.border2 
+{
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #d5d5d5;
+}
+
+.border3 
+{
+    border: 1.5px solid;
+}
+
+.border4 
+{
+    position: relative;
+    bottom: 14px;
+    color: white;
+    background: #ffffff;
+    border-color: #d5d5d5;
+}
+
+.border5 
+{
+    border: 1px solid;
+    border-radius: 34px;
+}
+
+nav a 
+{
+    border-right: 1px solid;
+}
+
+nav a.last, nav li:last-child a, #github
+{
+    border-right: 0 solid black;
+}
+
+ul 
+{
+    margin-right: 0px;
+    margin-left: 70px;
+}
+
+.imageRound 
+{
+    border-radius: 10px;
+}
+
+.food 
+{
+    border-radius: 25px;
+}
+
+.splash img, .registerButton
+{
+    width: 100%;
+}
+
+.grayscale 
+{
+    filter: grayscale(100%); /* Standard */
+    -webkit-filter: grayscale(100%); /* Webkit */
+    filter: url(/elements/grayscale.svg#desaturate); /* Firefox 4-34 */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Old WebKit */
+}
+
+.fullSize 
+{
+    width: 100%;
+    height: 100%;
+}
+
+.orderCounter
+{
+    width: 22%;
+    height: 10%;
+}
+
+.bioImg 
+{
+    width: 23px;
+}
+
+#textarea 
+{
+    width: 100%;
+    height: 100%;
+}
+
+.buttonCenter 
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-position: .5em left;
+    background-repeat: no-repeat;
+}
+
+.linkedButton 
+{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.buttonColor, .dropdown-item.active, .dropdown-item:active, .custom-checkbox :checked.custom-control-input ~ .custom-control-label::before, .tab button.active 
+{
+    background-color: #00b5ad;
+    border-color: #00b5ad;
+}
+
+.btn.disabled, .btn-primary.disabled 
+{
+    color: #000000;
+    background-color: rgba(0, 181, 173, 0.50);
+    border-color: rgba(0, 181, 173, 0.50);
+}
+
+.btn.disabled2, .btn-primary.disabled2 {
+    color: #808080;
+    background-color: rgba(100, 100, 100, 0.50);
+    border-color: rgba(100, 100, 100, 0.50);
+}
+
+.buttonColor:hover, .form-control:hover  
+{
+    transition: 0.3s;
+}
+
+.btn-primary:focus, .btn-secondary:focus, :not(:disabled):not(.disabled).btn-secondary:focus:active, :not(:disabled):not(.disabled).btn-secondary.active:focus, .show > .btn-secondary.dropdown-toggle:focus, :not(:disabled):not(.disabled).btn-secondary:active, :not(:disabled):not(.disabled).btn-secondary.active, .show > .btn-secondary.dropdown-toggle, .form-control:hover, .form-control:focus, .custom-control-label::selection, .custom-checkbox :checked.custom-control-input ~ .custom-control-label::before
+{
+    box-shadow: 0px 0px 0px 2px rgba(0, 181, 173, 0.50);
+}
+
+.dropdown-item:hover, .dropdown-item:focus, .custom-control-label::before, .tab button:hover 
+{
+    color: #ffffff;
+}
+
+td, .textCenter 
+{
+    border: 0px;
+    text-align: center;
+}
+
+.topElement, .middleElement 
+{
+    margin-top: 10px;
+}
+
+.topElement5 
+{
+    margin-top: 5px;
+}
+
+.topElement15 
+{
+    margin-top: 15px;
+}
+
+.topElement20 
+{
+    margin-top: 20px;
+}
+
+.topElement25 
+{
+    margin-top: 25px;
+}
+
+.topElement35
+{
+    margin-top: 35px;
+}
+
+.topElement50 
+{
+    margin-top: 50px;
+}
+
+.topElement60 
+{
+    margin-top: 60px;
+}
+
+.topElement100 
+{
+    margin-top: 100px;
+}
+
+.bottomElement, .middleElement, .splash, button, h6 
+{
+    margin-bottom: 10px;
+}
+
+.bottomElement20
+{
+    margin-bottom: 20px;
+}
+
+.middleElement0 
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.middleElement20 
+{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.leftElement5 
+{
+    margin-left: 5px;
+}
+
+/* Style the tab */
+.tab 
+{
+    overflow: hidden;
+    border: 1px solid;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button 
+{
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    transition: 0.3s;
+    margin: 0px;
+}
+
+/* Style the tab content */
+.tabcontent 
+{
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}

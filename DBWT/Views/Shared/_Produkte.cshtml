@@ -1,0 +1,28 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Produkte
+@{
+    int produktAnzahl = 0;
+}
+
+@{
+    foreach (Produkt pro in @Model.produkte)
+    {
+        produktAnzahl++;
+        if (pro.verfuegbar)
+        {
+            <div class="col-3 splash">
+                <img title="@pro.bild.titel" src="@pro.bild.bild" alt="@pro.bild.alttext" class="pictureSize border3 imageRound @if (produktAnzahl > 4) {@Html.Raw("topElement20");}" />
+                <p class="middleElement0">@pro.name</p>
+                @Html.ActionLink("Detail", "Index", "Detail", new { id = pro.id }, new { @class = "buttonCenter topElement" })
+            </div>
+        }
+        else
+        {
+            <div class="col-3 splash">
+                <img title="@pro.bild.titel" src="@pro.bild.bild" alt="@pro.bild.alttext" class="pictureSize border3 imageRound @if (produktAnzahl > 4) {@Html.Raw("topElement20");} grayscale" />
+                <p class="middleElement0">@pro.name</p>
+                @Html.ActionLink("Vergriffen", "Index", "Detail", new { id = pro.id }, new { @class = "buttonCenter topElement not-active" })
+            </div>
+        }
+    }
+}

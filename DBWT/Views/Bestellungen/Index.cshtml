@@ -1,0 +1,83 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Bestellungen
+
+@{
+    ViewBag.Name = "Bestellung";
+    ViewBag.Title = "e-Mensa - Bestellung";
+    ViewBag.Description = "Die Bestellseite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if(Model.changed)
+    {
+        <meta http-equiv="refresh" content="1">
+    }
+}
+
+<h2>Vorbestellungen als @Model.logRole</h2>
+
+<form id="order" method="post">
+    @if (Model.artikelListe.Count != 0)
+    {
+        <div class="middleElement20">
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th class="textCenter">ID</th>
+                        <th class="textCenter">Mahlzeit</th>
+                        <th class="textCenter">Einzelpreis</th>
+                        <th class="textCenter orderCounter">Anzahl</th>
+                        <th class="textCenter">Gesamtpreis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.Partial("_Bestellung", Model)
+                    <tr>
+                        <th class="textCenter">
+                            <label for="deleteL" class="sr-only">Löschen-Link</label>
+                            <input id="deleteL" type="submit" name="delete" value="Alle löschen" class="btn btn-primary buttonCenter buttonColor2" />
+                        </th>
+                        <th class="textCenter">
+                            <label for="updateL" class="sr-only">Update-Link</label>
+                            <input id="updateL" type="submit" name="update" value="Änderungen übernehmen" class="btn btn-primary buttonCenter buttonColor2" />
+                        </th>
+                        <th colspan="2" class="textCenter"><div class="topElement5">Diese Bestellung kostet:</div></th>
+                        <th class="textCenter"><div class="topElement5">@Model.gesamtpreis €</div></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Voraussichtlicher Abholzeitpunkt:
+            <select class="btn btn-secondary buttonColor2 bottomElement leftElement5" name="zeit" form="order">
+                @{
+                    DateTime time = DateTime.Now.AddMinutes(30);
+
+                    while (time.Minute != 0 && time.Minute != 15 && time.Minute != 30 && time.Minute != 45)
+                    {
+                        time = time.AddMinutes(1.0);
+                    }
+
+                    while (time < DateTime.Now.AddHours(3.5))
+                    {
+                        <option value="@time.ToString("HH,mm")">@time.ToString("HH:mm")</option>
+                        time = time.AddMinutes(15.0);
+                    }
+                }
+            </select>
+        </p>
+
+        <div class="buttonCenter bottomElement20 topElement">
+            <button type="submit" name="order" value="order" class="btn btn-primary buttonCenter buttonColor fontawesome-shopping-cart"> Jetzt zahlungspflichtig vorbestellen</button>
+        </div>
+
+        <p class="topElement @Model.UserMessageStatus">@Model.UserMessage</p>
+    }
+    else
+    {
+        <div class="middleElement20">
+            <h3>Es sind keine Bestellungen vorhanden.</h3>
+            <h5>Schauen Sie sich gerne unser Angebot auf der @Html.ActionLink("Produkte-Seite", "Index", "Produkte") an.</h5>
+        </div>
+    }
+</form>

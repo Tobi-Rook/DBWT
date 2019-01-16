@@ -1,0 +1,16 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Produkte
+
+@{ 
+    foreach (Oberkategorie oberkategorie in Model.oberkategorienliste)
+    {
+        <optgroup label="@oberkategorie.name">
+            @{ 
+                foreach (Unterkategorie unterkategorie in oberkategorie.unterkategorienliste)
+                {
+                    <option name="kategorienID" value="@unterkategorie.id" @if ( unterkategorie.id == Model.KategorieG) { @Html.Raw("selected")}>@unterkategorie.name</option>
+                }
+            }
+        </optgroup>
+    }
+}

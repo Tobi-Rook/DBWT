@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Name = "Registrierung";
+    ViewBag.Title = "e-Mensa - Registrierung";
+    ViewBag.Description = "Die Registrierseite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Registrierung </h2>
+<div class="form-row middleElement bottomElement">
+    <div class="col-2">
+
+    </div>
+    <div class="col-7">
+        <div class="form-row">
+            <div class="col-4">
+                @Html.ActionLink(" Als Student", "Student", "Registrierung", new { }, new { @class = "btn btn-primary fontawesome-book linkedButton buttonCenter buttonColor2 middleElement registerButton" })
+            </div>
+            <div class="col-4">
+                @Html.ActionLink(" Als Mitarbeiter", "Mitarbeiter", "Registrierung", new { }, new { @class = "btn btn-primary fontawesome-briefcase linkedButton buttonCenter buttonColor2 middleElement registerButton" })
+            </div>
+            <div class="col-4">
+                @Html.ActionLink(" Als Gast", "Gast", "Registrierung", new { }, new { @class = "btn btn-primary fontawesome-user linkedButton buttonCenter buttonColor2 middleElement registerButton" })
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+</div>

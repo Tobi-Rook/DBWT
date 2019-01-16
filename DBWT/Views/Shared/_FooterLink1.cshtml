@@ -1,0 +1,18 @@
+﻿@{
+    if (!string.IsNullOrEmpty(Session["user"] as string) && ViewBag.Name == "Login")
+    {
+        <li class="nav-item">@Html.ActionLink("Logoff", "Index", "Login", new { }, new { @class = "nav-link not-active" })</li>
+    }
+    else if (!string.IsNullOrEmpty(Session["user"] as string))
+    {
+        <li class="nav-item">@Html.ActionLink("Logoff", "Index", "Login", new { }, new { @class = "nav-link" })</li>
+    }
+    else if (ViewBag.Name == "Login")
+    {
+        <li class="nav-item">@Html.ActionLink("Login", "Index", "Login", new { }, new { @class = "nav-link not-active" })</li>
+    }
+    else
+    {
+        <li class="nav-item">@Html.ActionLink("Login", "Index", "Login", new { }, new { @class = "nav-link" })</li>
+    }
+}

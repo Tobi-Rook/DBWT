@@ -1,0 +1,51 @@
+﻿@model DBWT.Models.Login
+
+@{
+    ViewBag.Name = "Start";
+    ViewBag.Title = "e-Mensa - Start";
+    ViewBag.Description = "Die Startseite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row middleElement20">
+    <div class="col splash">
+        <img title="Photo by Kevin Hou [MODIFIED]" src="~/Ressources/Images/kevin-hou.jpg" alt="Titelbild (von Kevin Hou)" class="imageRound" />
+    </div>
+</div>
+<div class="row middleElement20">
+    <div class="col-4">
+        <p id="text1" class="topElement">Der Dienst e-Mensa ist noch in der Beta. Sie können bereits @Html.ActionLink("Mahlzeiten", "Index", "Produkte") durchstöbern, aber noch nicht bestellen.</p>
+    </div>
+    <div class="col-8">
+        <div class="form-row">
+            <div class="col-8"><h2>Leckere Gerichte vorbestellen</h2><p>...und gemeinsam mit Freunden und Kommilitonen essen</p></div>
+            <div class="col-4">
+                @if (Model.signedIn)
+                {
+                    @Html.ActionLink(" Registrieren", "Index", "Registrierung", new { }, new { @class = "btn btn-primary fontawesome-hand-right buttonCenter linkedButton buttonColor2 topElement5 disabled disabled2" })
+                    @Html.ActionLink(" Abmelden", "Index", "Login", new { }, new { @class = "btn btn-primary fontawesome-circle-arrow-right linkedButton buttonCenter buttonColor2 topElement" })
+                }
+                else
+                {
+                    @Html.ActionLink(" Registrieren", "Index", "Registrierung", new { }, new { @class = "btn btn-primary fontawesome-hand-right buttonCenter linkedButton buttonColor2 topElement5" })
+                    @Html.ActionLink(" Anmelden", "Index", "Login", new { }, new { @class = "btn btn-primary fontawesome-circle-arrow-right linkedButton buttonCenter buttonColor2 topElement" })
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row topElement20 bottomElement">
+    <div class="col-4">
+        @if (Model.signedIn)
+        {
+            <p class="topElement60">Sie sind bereits registriert und werden rechtzeitig über die Veröffentlichung des Dienstes per Mail informiert.</p>
+        }
+        else
+        {
+            <p class="topElement60">Registrieren Sie sich @Html.ActionLink("hier", "Index", "Registrierung"), um über die Veröffentlichung des Dienstes per Mail informiert zu werden.</p>
+        }
+    </div>
+    <div class="col-8 splash">
+        <img title="Photo by Bady QB [MODIFIED]" src="~/Ressources/Images/bady-qb.jpg" alt="Neuigkeiten (von Bady QB)" class="imageRound" />
+    </div>
+</div>

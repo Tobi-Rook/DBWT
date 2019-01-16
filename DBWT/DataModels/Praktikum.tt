@@ -1,0 +1,23 @@
+<#@ template language="C#" debug="True" hostSpecific="True"                       #>
+<#@ output extension=".generated.cs"                                              #>
+<#@ include file="$(LinqToDBT4MySqlTemplatesDirectory)LinqToDB.MySql.Tools.ttinclude" #>
+<#@ include file="$(LinqToDBT4MySqlTemplatesDirectory)PluralizationService.ttinclude" #>
+<# //@ include file="$(ProjectDir)LinqToDB.Templates\LinqToDB.MySql.Tools.ttinclude" #>
+<# //@ include file="$(ProjectDir)LinqToDB.Templates\PluralizationService.ttinclude" #>
+<#
+	// Namespace für den DataContext 
+	NamespaceName = "DataModels";
+
+	// optionale Flags für den bequemeren Umgang mit den Klassen 
+	PluralizeClassNames = false; 
+	SingularizeClassNames = false;
+	SingularizeDataContextPropertyNames = false;
+	PluralizeDataContextPropertyNames = false;
+
+	// geben Sie hier die Zugangsdaten zum MariaDB an 
+	// (Serveradresse, Datenbankname, User, Passwort) 
+	LoadMySqlMetadata( "localhost", "emensa", "webapp", "" );
+
+	// wird das Model anhand der Metadaten letztlich anlegen 
+	GenerateModel();
+#>

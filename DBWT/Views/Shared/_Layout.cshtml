@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Ressources/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Ressources/e-Mensa.css" />
+    <link rel="stylesheet" href="~/Ressources/e-MensaDark.css" />
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArbUAAq21AAEAAAAAAAAAAAAAAACttQADrbUAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK21AAyttQAGrbUAAwAAAACttQAHrbUADgAAAACttQACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACttQDFrbUA0wAAAACttQBFrbUAO621AAmttQC4rbUA2a21ALettQBnAAAAAK21AAIAAAAAAAAAAAAAAAAAAAAArbUA0621AO2ttQBNrbUA/621ALyttQA1rbUA/621APuttQD/rbUAnAAAAACttQADAAAAAAAAAACttQABAAAAAK21AL+ttQD/rbUA+q21AP2ttQD7rbUA5a21AP2ttQD4rbUA/621AJ4AAAAArbUAAwAAAAAAAAAArbUAAwAAAACttQCprbUA/621APmttQD8rbUA/K21AP2ttQD8rbUA+621AP+ttQCGAAAAAK21AAQAAAAAAAAAAK21AAMAAAAArbUAja21AP+ttQD5rbUA/621APOttQDkrbUA/621APittQD/rbUAkgAAAACttQADAAAAAAAAAACttQABAAAAAK21AHmttQD/rbUA+621APWttQBJrbUAA621ALGttQD/rbUA/621AIkAAAAArbUABAAAAAAAAAAArbUAAwAAAACttQBfrbUA/621APSttQA/AAAAAK21AAIAAAAArbUAsK21AP+ttQClAAAAAK21AAMAAAAAAAAAAK21AAMAAAAArbUASq21AP+ttQBiAAAAAK21AASttQACAAAAAK21ABCttQDnrbUAyAAAAACttQABAAAAAAAAAACttQACAAAAAK21AEOttQCTAAAAAK21AAGttQAirbUABK21AAMAAAAArbUAUq21AN+ttQACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK21AAEAAAAArbUABAAAAACttQANrbUAIgAAAACttQB3rbUAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK21AAEAAAAAAAAAAAAAAAAAAAAArbUABa21AByttQAHAAAAAK21AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK21AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArbUAAQAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA548AAOSHAADgBwAA4AcAAOAHAADxhwAA88cAAPfnAAD39wAA//8AAP//AAD//wAA//8AAA==" rel="icon" type="image/x-icon" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="container">
+        <header class="row middleElement">
+            <nav class="col-2">
+                <h1>e-Mensa</h1>
+            </nav>
+            <nav class="col-6 topElement">
+                <ul class="nav">
+                    @Html.Partial("_HeaderLink1")
+                    @Html.Partial("_HeaderLink2")
+                    @Html.Partial("_HeaderLink3")
+                    <li class="nav-item"><a class="nav-link" href="https://www.fh-aachen.de" target="_blank">FH Aachen</a></li>
+                </ul>
+            </nav>
+            <nav class="col-4">
+                <form action="http://www.google.de/search" method="get" class="topElement" target="_blank">
+                    <div class="row">
+                        <input type="hidden" name="as_sitesearch" value="http://fh-aachen.de" />
+                        <div class="col-8">
+                            <label for="suche" class="sr-only topElement">Suche</label>
+                            <input id="suche" type="search" name="q" class="form-control" placeholder="Beispiel: Bibliothek" />
+                        </div>
+                        <div class="col-4">
+                            <label for="sucheB" class="sr-only topElement">Suche-Button</label>
+                            <input id="sucheB" type="submit" name="sucheB" value="Suche" class="btn btn-primary buttonColor2 fullSize" />
+                        </div>
+                    </div>
+                </form>
+            </nav>
+        </header>
+
+        <div class="border2">
+            @RenderBody()
+        </div>
+
+        <footer class="row middleElement20">
+            <nav class="col-2 topElement">
+                <a id="github" href="https://github.com/Tobi-Rook/DBWT" target="_blank">© 2019 Tobias Ansey</a>
+            </nav>
+            <nav class="col-6">
+                <ul class="nav">
+                    @Html.Partial("_FooterLink1")
+                    @Html.Partial("_FooterLink2")
+                    @Html.Partial("_FooterLink3")
+                    @Html.Partial("_FooterLink4")
+                </ul>
+            </nav>
+            <nav class="col-4 topElement">
+                @{
+                    DateTime t = DateTime.Now;
+                    <p id="time">Aufgerufen am @t.ToString("dd").@t.ToString("MM").@t.ToString("yyyy") um @t.ToString("HH:mm") Uhr</p>
+                }
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

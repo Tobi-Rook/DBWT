@@ -1,0 +1,63 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Produkte
+
+
+@{
+    ViewBag.Name = "Produkte";
+    ViewBag.Title = "e-Mensa - Produkte";
+    ViewBag.Description = "Die Produkt-Seite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    <script src="../Ressources/jquery-3.3.1.min.js"></script>
+    <script src="../Ressources/bootstrap.bundle.js"></script>
+}
+
+<h2> Verfügbare Speisen (@Model.filter) </h2>
+<div class="row middleElement20">
+    <div class="col-2 border">
+        <p class="border4">Speisenliste filtern</p>
+        <div class="topElement35">
+            <form id="filter">
+                <div class="form-row buttonCenter">
+                    <div class="dropdown textCenter">
+                        <select class="btn btn-secondary buttonColor2 fullSize bottomElement" name="kategorie" form="filter">
+                            <optgroup label="Generell">
+                                <option value="0">Alle zeigen</option>
+                            </optgroup>
+                            @Html.Partial("_DropDown", Model)
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="custom-control custom-checkbox checkColor topElement leftElement5">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="verfuegbar" @if (Model.VerfuegbarG == "on") { @Html.Raw("checked"); }>
+                        <label class="custom-control-label" for="customCheck1">nur verfügbare</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="custom-control custom-checkbox checkColor topElement leftElement5">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2" name="vegetarisch" @if (Model.VegetarischG == "on") { @Html.Raw("checked"); }>
+                        <label class="custom-control-label" for="customCheck2">nur vegetarische</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="custom-control custom-checkbox checkColor topElement leftElement5">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3" name="vegan" @if (Model.VeganG == "on") { @Html.Raw("checked"); }>
+                        <label class="custom-control-label" for="customCheck3">nur vegane</label>
+                    </div>
+                </div>
+                <div class="form-row buttonCenter topElement20">
+                    <label for="filterB" class="sr-only topElement">Filter-Button</label>
+                    <button id="filterB" type="submit" class="btn btn-primary buttonCenter buttonColor topElement fullSize fontawesome-filter"> Speisen filtern</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="row">
+            @Html.Partial("_Produkte", Model)
+        </div>
+    </div>
+</div>

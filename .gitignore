@@ -259,3 +259,11 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/DBWT/Web.Release.config
+/DBWT/Web.Debug.config
+/DBWT/Web.config
+/DBWT/Views/web.config
+/DBWT/packages.config
+/DBWT/Global.asax.cs
+/DBWT/Global.asax
+/DBWT/DBWT.csproj

@@ -1,0 +1,136 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Registrierung
+
+@{
+    ViewBag.Name = "Registrierung als Mitarbeiter";
+    ViewBag.Title = "e-Mensa - Registrierung";
+    ViewBag.Description = "Die Registrierseite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    <script src="~/Ressources/passwordCheck.js"></script>
+}
+
+<div class="form-row topElement">
+    <div class="col-3 textCenter">
+        @Html.ActionLink(" Rolle wechseln", "Index", "Registrierung", new { }, new { @class = "btn btn-primary fontawesome-arrow-left linkedButton buttonCenter buttonColor2 topElement" })
+    </div>
+    <div class="col-6">
+        <div class="form-row">
+            <div class="col-12">
+                <h2>Registrierung als Mitarbeiter</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<form data-toggle="validator" method="post" id="signup_form" action="~/Registrierung/Mitarbeiter" class="middleElement20">
+    <div class="form-row topElement">
+        <div class="col-3 textCenter topElement5">
+            Persönliche Angaben
+        </div>
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-6">
+                    <input type="text" name="vorname" id="vorname" class="form-control" placeholder="Vorname" onkeyup="checkButtonM();" required>
+                </div>
+                <div class="col-6">
+                    <input type="text" name="nachname" id="nachname" class="form-control" placeholder="Nachname" onkeyup="checkButtonM();" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+    <div class="form-row topElement">
+        <div class="col-3 textCenter topElement5">
+            Geburtsdatum (optional)
+        </div>
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-4">
+                    <input type="text" name="geburtstag" id="geburtstag" class="form-control" placeholder="Geburtstag: DD">
+                </div>
+                <div class="col-4">
+                    <input type="text" name="geburtsmonat" id="geburtsmonat" class="form-control" placeholder="Geburtsmonat: MM">
+                </div>
+                <div class="col-4">
+                    <input type="text" name="geburtsjahr" id="geburtsjahr" class="form-control" placeholder="Geburtsjahr: YYYY">
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="form-row topElement25">
+        <div class="col-3 textCenter topElement5">
+            Rollenspezifische Angaben
+        </div>
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-6">
+                    <input type="text" name="buero" id="buero" class="form-control" placeholder="Büro (optional)">
+                </div>
+                <div class="col-6">
+                    <input type="number" name="telefon" id="telefon" class="form-control" placeholder="Telefon (optional)">
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="form-row topElement25">
+        <div class="col-3 textCenter topElement5">
+            Nutzerdaten
+        </div>
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-6">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="E-Mail-Adresse" onkeyup="checkButtonM();" required>
+                </div>
+                <div class="col-6">
+                    <input type="text" name="nutzername" id="nutzername" class="form-control" placeholder="Nutzername" onkeyup="checkButtonM();" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="form-row topElement">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            <div class="form-row">
+                <div class="col-6">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Passwort" data-minlength="4" onkeyup="check(); checkButtonM();" required>
+                </div>
+                <div class="col-6">
+                    <input type="password" name="passwordVerify" id="passwordVerify" class="form-control" placeholder="Passwort bestätigen" onkeyup='check(); checkButtonM();' required>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 topElement5">
+            <span id="message"></span>
+        </div>
+    </div>
+    <div class="form-row topElement25">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+            <div class="form-row">
+                <input type="submit" value="Registrieren" class="btn btn-secondary linkedButton buttonColor buttonCenter textCenter fullSize disabled" id="passwordButton" disabled>
+            </div>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+    <p class="topElement @Model.UserMessageStatus">@Model.UserMessage</p>
+</form>

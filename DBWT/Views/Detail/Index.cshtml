@@ -1,0 +1,143 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Detail
+
+@{
+    ViewBag.Name = "Detail";
+    ViewBag.Title = "e-Mensa - Detail";
+    ViewBag.Description = "Die Detail-Seite der beliebten E-Mensa der FH Aachen.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Request.Form["ordered"] == "ordered" && Model.UserMessageStatus == "true")
+    {
+        <meta http-equiv="refresh" content="1">
+    }
+}
+
+@section head {
+    <script src="~/Ressources/JavaScript.js"></script>
+    @if (Model.gueltig == false)
+    {
+        <meta http-equiv="refresh" content="3; URL=../../Home">
+    }
+}
+
+@if (Model.gueltig == false)
+{
+    <div class="middleElement20">
+        <h3>Es wurde keine gültige Mahlzeit ausgewählt.</h3>
+        <h5>Zurück zur Startseite...</h5>
+    </div>
+}
+else
+{
+    <h2>Details für "@Model.pro.name"</h2>
+    <div class="row middleElement20">
+        <div class="col-3 border">
+            @if (Model.log.signedIn)
+            {
+                <div>
+                    <p class="topElement60">Hallo @Session["user"].ToString(), Sie sind angemeldet als @Session["role"].ToString().</p>
+                </div>
+                <form method="post" action="~/Login" name="Login" id="Login">
+                    <input type="text" hidden name="signout" value="1" />
+                    <label for="abmeldenB" class="sr-only">Abmelde-Button</label>
+                    <button id="anmeldenB" type="submit" class="btn btn-primary buttonCenter buttonColor topElement35 fontawesome-circle-arrow-right"> Abmelden</button>
+                </form>
+            }
+            else
+            {
+                <p class="border4">Login</p>
+                <form action="~/Login" method="post" name="Login" id="Login">
+                    <label class="sr-only" for="benutzer">Benutzername</label>
+                    <input id="benutzer" placeholder="Benutzername" name="user" required class="form-control topElement20">
+                    <label class="sr-only" for="passwd">Passwort</label>
+                    <input type="password" id="passwd" placeholder="Passwort" name="password" required class="form-control topElement20">
+                    <label for="anmeldenB" class="sr-only ">Anmelde-Button</label>
+                    <button id="anmeldenB" type="submit" class="btn btn-primary buttonCenter buttonColor topElement35 fontawesome-circle-arrow-right"> Anmelden</button>
+                </form>
+
+            }
+        </div>
+        <div class="col-6 splash">
+            @{
+                <img title="@Model.pro.bild.titel" src="@Model.pro.bild.bild" alt="@Model.pro.bild.alttext" class="topElement5 food" />
+            }
+        </div>
+        <div class="col-3">
+            <h4>@Model.log.role-Preis</h4>
+            <h5>@Model.preis €</h5>
+            @{
+                if (Model.log.signedIn)
+                {
+                    <form id="order" method="post">
+                        <input type="text" hidden name="proID" value="@Model.pro.id" />
+                        <input type="text" hidden name="ordered" value="ordered" />
+                        <button type="submit" class="btn btn-primary buttonCenter buttonColor topElement20 fontawesome-food"> Vorbestellen</button>
+                    </form>
+                }
+                else
+                {
+                    @Html.ActionLink(" Vorbestellen", "Index", "Detail", new { id = Model.pro.id }, new { @class = "btn btn-primary buttonCenter buttonColor topElement20 linkedButton fontawesome-food disabled" })
+                }
+            }
+            @if (Request.Form["ordered"] == "ordered")
+            {
+                <p class="topElement20 @Model.UserMessageStatus">@Model.UserMessage</p>
+            }
+        </div>
+    </div>
+    <div class="row topElement20 bottomElement">
+        <div class="col-3 topElement topElement25">
+            @if (string.IsNullOrEmpty(Session["user"] as string))
+            {
+                <p>Melden Sie sich jetzt an, um die wirklich viel günstigeren Preise für Mitarbeiter oder Studenten zu sehen.</p>
+            }
+            else
+            {
+                <p>Ihnen wird nun der für Ihre Rolle gültige Preis angezeigt.</p>
+            }
+        </div>
+        <div class="col-6 topElement bottomElement">
+            <!-- Tab links -->
+            <div class="tab">
+                <button class="tablinks" id="openDefault" onclick="openCity(event, 'Beschreibung')" autofocus>Beschreibung</button>
+                <button class="tablinks" onclick="openCity(event, 'Zutaten')">Zutaten</button>
+                <button class="tablinks" onclick="openCity(event, 'Bewertung')">Bewertung</button>
+            </div>
+
+            <!-- Tab content -->
+            <div id="Beschreibung" class="tabcontent">
+                <p class="middleElement">@Model.beschreibung</p>
+            </div>
+
+            <div id="Zutaten" class="tabcontent">
+                <p class="middleElement">@Html.Partial("_Zutat", Model)</p>
+            </div>
+
+            <div id="Bewertung" class="tabcontent">
+                <form action="http://bc5.m2c-lab.fh-aachen.de/form.php" method="post">
+                    <div class="form-row topElement">
+                        <div class="col">
+                            <label for="BenutzerFeld" class="sr-only topElement">Benutzer-Feld</label>
+                            <input name="benutzer" class="form-control" id="BenutzerFeld" placeholder="Benutzername" type="text" required>
+                            <label for="BewertungsFeld" class="sr-only topElement">Bewertungs-Feld</label>
+                            <input name="bewertung" class="form-control topElement" id="BewertungsFeld" placeholder="Bewertung von 1 bis 5" type="number" min="1" max="5" required>
+                        </div>
+                        <div class="col">
+                            <textarea name="bemerkung" id="textarea" class="fullSize form-control" placeholder="Kommentar" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input name="matrikel" hidden value="PRIVACY IS IMPORTANT :P" />
+                            <input name="kontrolle" hidden value="Ans" />
+                            <label for="sendenB" class="sr-only topElement">Sende-Button</label>
+                            <button id="sendenB" type="submit" class="btn btn-primary buttonCenter buttonColor topElement15 fontawesome-edit"> Bewertung senden</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>document.getElementById("openDefault").click()</script>
+}

@@ -1,0 +1,10 @@
+﻿@{
+    if (ViewBag.Name == "Registrierung" || ViewBag.Name == "Registrierung als Student" || ViewBag.Name == "Registrierung als Mitarbeiter" || ViewBag.Name == "Registrierung als Gast" || !string.IsNullOrEmpty(Session["user"] as string))
+    {
+        <li class="nav-item">@Html.ActionLink("Registrieren", "Index", "Registrierung", new { }, new { @class = "nav-link not-active" })</li>
+    }
+    else
+    {
+        <li class="nav-item">@Html.ActionLink("Registrieren", "Index", "Registrierung", new { }, new { @class = "nav-link" })</li>
+    }
+}

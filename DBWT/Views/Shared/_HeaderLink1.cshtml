@@ -1,0 +1,10 @@
+﻿@{
+    if (ViewBag.Name == "Start")
+    {
+        <li class="nav-item">@Html.ActionLink("Start","Index","Home",new { },new { @class="nav-link not-active" })</li>
+    }
+    else
+    {
+        <li class="nav-item">@Html.ActionLink("Start", "Index", "Home", new { }, new { @class = "nav-link" })</li>
+    }
+}

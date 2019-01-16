@@ -1,0 +1,20 @@
+﻿@using DBWT.Models
+@model DBWT.Models.Bestellungen
+
+@{
+    foreach (Artikel artikel in Model.artikelListe)
+    {
+        decimal gesamtpreis = artikel.anzahl * artikel.preis;
+
+        <tr>
+            <th class="textCenter"><div class="topElement5">@artikel.ID</div></th>
+            <td><div class="topElement5">@artikel.name</div></td>
+            <td><div class="topElement5">@artikel.preis €</div></td>
+            <td>
+                <label for="AnzahlFeld@{@artikel.ID}" class="sr-only topElement">Anzahl-Feld</label>
+                <input name="anzahl@{@artikel.ID}" class="btn buttonColor2 orderCounter" id="AnzahlFeld@{@artikel.ID}" value="@artikel.anzahl" type="number" min="0" max="99" required>
+            </td>
+            <td><div class="topElement5">@gesamtpreis €</div></td>
+        </tr>
+    }
+}
