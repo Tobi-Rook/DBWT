@@ -1,0 +1,52 @@
+﻿@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before 
+{
+    font-family: 'FontAwesome', sans-serif;
+}
+
+thead th
+{
+    border-top: 0px;
+    border-bottom: 1px #d5d5d5 solid;
+}
+
+.tab button.active
+{
+    color: #ffffff;
+}
+
+.not-active, #github:hover 
+{
+    color: #d5d5d5;
+}
+
+.border4, a:hover, .dropdown-item:hover, .dropdown-item:focus, .buttonColor:hover, .tab button:hover,
+.show > .btn-secondary.dropdown-toggle, #github, thead th, th, .table-striped
+{
+    color: #000000;
+}
+
+.border, .border2, .border3, .border4, nav a, .buttonColor:hover, .form-control, .form-control:focus, .tab,
+.tabcontent, .show > .btn-secondary.dropdown-toggle
+{
+    border-color: #d5d5d5;
+}
+
+.border4, thead th, th, .table-striped
+{
+    background-color: #ffffff;
+}
+
+.buttonColor:hover, :not(:disabled):not(.disabled).btn-secondary:active,
+:not(:disabled):not(.disabled).btn-secondary.active, .show > .btn-secondary.dropdown-toggle, .dropdown-item:hover,
+.dropdown-item:focus, .form-control, .tab button:hover
+{
+    background-color: #d5d5d5;
+}
+
+.form-failed
+{
+    border-color: #ff0000;
+    color: #ff0000;
+}
